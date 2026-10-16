@@ -1,0 +1,92 @@
+<resources>
+<!--    ACTIVITY_MAIN-->
+    <string name="app_name">Financeiro 360°</string>
+    <string name="header_title">Financeiro 360°</string>
+    <string name="header_subtitle">Seus gastos, com data, hora e lugar.</string>
+    <string name="login_title">Entrar</string>
+    <string name="login_subtitle">Use o e-mail e a senha da sua conta.</string>
+    <string name="hint_email">E-mail</string>
+    <string name="btn_login">Entrar</string>
+    <string name="placeholder_email">voce@email.com</string>
+
+<!--    ACTIVITY_HOME-->
+    <string name="home_app_title">Financeiro 360°</string>
+    <string name="home_greeting">Olá, Caio</string>
+    <string name="home_date_example">Sexta, 25 de setembro</string>
+    <string name="home_balance_label">Saldo de setembro</string>
+    <string name="home_balance_value">R$ 1.842,30</string>
+    <string name="home_income_value">Ganhos R$ 4.200,00</string>
+    <string name="home_expense_value">Despesas R$ 2.357,70</string>
+
+    <!-- Atalhos Rápidos -->
+    <string name="action_current_entry">Lançamento\natual</string>
+    <string name="action_new_entry">Novo\nlançamento</string>
+    <string name="action_new_income">Novo ganho</string>
+    <string name="action_history">Histórico</string>
+
+    <!-- Seção Gastos por tipo -->
+    <string name="section_expenses_by_type">Gastos por tipo</string>
+    <string name="action_see_indicators">Ver indicadores</string>
+
+    <!-- Seção Últimos lançamentos -->
+    <string name="section_recent_entries">Últimos lançamentos</string>
+    <string name="action_see_all">Ver tudo</string>
+
+<!--    ACTIVITY_PROFILE-->
+    <string name="profile_title">Perfil</string>
+    <string name="btn_save">Salvar</string>
+    <string name="account_data_title">Dados da conta</string>
+    <string name="label_name">Nome</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_password">Senha</string>
+    <string name="hint_new_password">Deixe em branco para manter</string>
+    <string name="expense_types_title">Tipos e subtipos de despesa</string>
+    <string name="btn_new_type">+ Novo tipo</string>
+
+<!--    DIALOG_LOCATION_ERROR-->
+    <string name="location_error_title">Não conseguimos obter a sua localização</string>
+    <string name="location_error_description">O sinal de GPS não foi encontrado, então este lançamento não pode ser salvo como atual. Registre a despesa pelo Novo lançamento, digitando o endereço manualmente.</string>
+    <string name="btn_go_to_new_entry">Ir para Novo lançamento</string>
+    <string name="btn_try_again">Tentar novamente</string>
+    <string name="btn_cancel">Cancelar</string>
+
+<!--    BOTTOM_SHEET_CURRENT_EXPENSE-->
+    <string name="current_expense_title">Lançamento atual</string>
+    <string name="captured_automatically">CAPTURADO AUTOMATICAMENTE</string>
+    <string name="captured_address">Av. Paulista, 1578 – Bela Vista, São Paulo</string>
+    <string name="captured_coords">-23.5614 · -46.6559</string>
+    <string name="captured_datetime">25/09 · 14:32</string>
+    <string name="placeholder_current_value">R$ 58,90</string>
+    <string name="label_installments">Parcelas</string>
+    <string name="placeholder_installments_count">3x</string>
+    <string name="placeholder_installments_calc">3 × R$ 19,63</string>
+    <string name="placeholder_current_desc">Almoço com a equipe</string>
+
+<!--    BOTTOM_SHEET_NEW_EXPENSE-->
+    <string name="new_expense_title">Novo lançamento</string>
+    <string name="new_expense_subtitle">Para despesas que não foram registradas na hora</string>
+    <string name="label_address">Endereço</string>
+    <string name="placeholder_address">Rua Augusta, 900 – Consolação, São Paulo</string>
+    <string name="label_date_short">Data</string>
+    <string name="label_time">Hora</string>
+    <string name="placeholder_expense_value">R$ 120,00</string>
+    <string name="label_payment_method">Forma de pagamento</string>
+    <string name="payment_cash">Dinheiro</string>
+    <string name="payment_pix">Pix</string>
+    <string name="payment_debit">Débito</string>
+    <string name="payment_credit">Crédito</string>
+    <string name="label_type">Tipo</string>
+    <string name="label_subtype">Subtipo</string>
+    <string name="placeholder_expense_desc">Aniversário do Diogo</string>
+    <string name="btn_save_expense">Salvar despesa</string>
+
+<!--    BOTTOM_SHEET_NEW_INCOME-->
+    <string name="new_income_title">Novo ganho</string>
+    <string name="new_income_subtitle">Todos os campos são obrigatórios</string>
+    <string name="label_value">Valor *</string>
+    <string name="placeholder_value">R$ 650,00</string>
+    <string name="label_description">Descrição *</string>
+    <string name="placeholder_description">Pagamento de freelance</string>
+    <string name="label_date">Data *</string>
+    <string name="btn_save_income">Salvar ganho</string>
+</resources>
