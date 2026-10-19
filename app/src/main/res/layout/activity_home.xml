@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Avatar do Usuário (Aumentado de 48dp para 56dp) -->
+            <!-- Avatar do Usuário -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAvatar"
                 android:layout_width="56dp"
@@ -54,7 +54,7 @@
                     android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Saudação e Data (Texto aumentado) -->
+            <!-- Saudação e Data -->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
                 app:layout_constraintStart_toStartOf="@id/tvDate"
                 app:layout_constraintTop_toBottomOf="@id/tvDate" />
 
-            <!-- Nome da App no Header (Aumentado) -->
+            <!-- Nome da App no Header -->
             <TextView
                 android:id="@+id/tvAppName"
                 android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/cardAvatar" />
 
-            <!-- Saldo e Valores (Aumentados) -->
+            <!-- Saldo e Valores -->
             <TextView
                 android:id="@+id/tvBalanceLabel"
                 android:layout_width="wrap_content"
@@ -118,7 +118,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvBalanceLabel" />
 
-            <!-- Chips de Ganhos e Despesas (Aumentados) -->
+            <!-- Chips de Ganhos e Despesas -->
             <LinearLayout
                 android:id="@+id/layoutChips"
                 android:layout_width="wrap_content"
@@ -182,7 +182,7 @@
 
             </LinearLayout>
 
-            <!-- Card Branco de Atalhos Rápidos (Ícones de 48dp -> 56dp, Textos 11sp -> 13sp) -->
+            <!-- Card Branco de Atalhos Rápidos -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardQuickActions"
                 android:layout_width="0dp"
@@ -562,7 +562,7 @@
 
             </LinearLayout>
 
-            <!-- Seção: Últimos lançamentos (Textos maiores) -->
+            <!-- Seção: Últimos lançamentos -->
             <TextView
                 android:id="@+id/tvRecentTitle"
                 android:layout_width="wrap_content"

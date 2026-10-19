@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import android.content.Intent
+import android.widget.TextView
 
 class HomeActivity : AppCompatActivity() {
 

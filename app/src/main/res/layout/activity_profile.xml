@@ -81,10 +81,10 @@
             app:layout_constraintTop_toBottomOf="@id/btnBack">
 
             <TextView
+                android:id="@+id/cardUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="CV"
                 android:textColor="#123261"
                 android:textSize="22sp"
                 android:textStyle="bold" />

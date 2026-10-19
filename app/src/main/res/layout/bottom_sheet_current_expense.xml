@@ -158,7 +158,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/captured_datetime"
                     android:textColor="#6B7280"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@id/icTime"
@@ -270,6 +269,7 @@
                 android:layout_weight="1"
                 android:text="@string/payment_credit"
                 android:textAllCaps="false"
+                android:textSize="13sp"
                 app:cornerRadius="12dp"
                 app:backgroundTint="@color/selector_payment_button_bg"
                 app:strokeColor="@color/selector_payment_button_text"
@@ -364,7 +364,6 @@
                 android:id="@+id/tvInstallmentsCalc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/placeholder_installments_calc"
                 android:textColor="#6B7280"
                 android:textSize="20sp" />
 
@@ -490,7 +489,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
-                android:text="@string/placeholder_current_desc"
                 android:textColor="#111827"
                 android:textSize="15sp" />
         </com.google.android.material.textfield.TextInputLayout>

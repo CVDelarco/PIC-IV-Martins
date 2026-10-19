@@ -93,12 +93,9 @@
     <string name="captured_automatically">CAPTURADO AUTOMATICAMENTE</string>
     <string name="captured_address">Av. Paulista, 1578 – Bela Vista, São Paulo</string>
     <string name="captured_coords">-23.5614 · -46.6559</string>
-    <string name="captured_datetime">25/09 · 14:32</string>
     <string name="placeholder_current_value">R$ 58,90</string>
     <string name="label_installments">Parcelas</string>
     <string name="placeholder_installments_count">3x</string>
-    <string name="placeholder_installments_calc">3x12</string>
-    <string name="placeholder_current_desc">aniversário do Diogo</string>
 
     <!--    BOTTOM_SHEET_NEW_EXPENSE-->
     <string name="new_expense_title">Novo lançamento</string>
@@ -122,9 +119,7 @@
     <string name="new_income_title">Novo ganho</string>
     <string name="new_income_subtitle">Todos os campos são obrigatórios</string>
     <string name="label_value">Valor *</string>
-    <string name="placeholder_value">R$ 650,00</string>
     <string name="label_description">Descrição *</string>
-    <string name="placeholder_description">Pagamento de freelance</string>
     <string name="label_date">Data *</string>
     <string name="btn_save_income">Salvar ganho</string>
 </resources>
