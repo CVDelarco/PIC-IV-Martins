@@ -1,5 +1,5 @@
 <resources>
-<!--    ACTIVITY_MAIN-->
+    <!--    ACTIVITY_MAIN-->
     <string name="app_name">Financeiro 360°</string>
     <string name="header_title">Financeiro 360°</string>
     <string name="header_subtitle">Seus gastos, com data, hora e lugar.</string>
@@ -7,9 +7,8 @@
     <string name="login_subtitle">Use o e-mail e a senha da sua conta.</string>
     <string name="hint_email">E-mail</string>
     <string name="btn_login">Entrar</string>
-    <string name="placeholder_email">voce@email.com</string>
 
-<!--    ACTIVITY_HOME-->
+    <!--    ACTIVITY_HOME-->
     <string name="home_app_title">Financeiro 360°</string>
     <string name="home_greeting">Olá, Caio</string>
     <string name="home_date_example">Sexta, 25 de setembro</string>
@@ -32,7 +31,7 @@
     <string name="section_recent_entries">Últimos lançamentos</string>
     <string name="action_see_all">Ver tudo</string>
 
-<!--    ACTIVITY_PROFILE-->
+    <!--    ACTIVITY_PROFILE-->
     <string name="profile_title">Perfil</string>
     <string name="btn_save">Salvar</string>
     <string name="account_data_title">Dados da conta</string>
@@ -43,14 +42,53 @@
     <string name="expense_types_title">Tipos e subtipos de despesa</string>
     <string name="btn_new_type">+ Novo tipo</string>
 
-<!--    DIALOG_LOCATION_ERROR-->
+    <!--    ACTIVITY_INDICATORS-->
+    <string name="title_indicators">Indicadores</string>
+    <string name="placeholder_month_year">Setembro de 2026</string>
+    <string name="label_month_balance">Saldo do mês</string>
+    <string name="placeholder_month_balance">R$ 1.842,30</string>
+
+    <string name="title_gains_expenses">Ganhos x despesas</string>
+    <string name="legend_gains">Ganhos</string>
+    <string name="legend_expenses">Despesas</string>
+
+    <string name="label_gains_total">Ganhos</string>
+    <string name="value_gains_total">R$ 4.200,00</string>
+    <string name="label_expenses_total">Despesas</string>
+    <string name="value_expenses_total">R$ 2.357,70</string>
+
+    <string name="tab_by_type">Por tipo</string>
+    <string name="tab_by_payment">Por pagamento</string>
+
+    <string name="category_housing">Moradia</string>
+    <string name="value_housing">R$ 1.200,00</string>
+    <string name="percent_housing">51%</string>
+
+    <string name="category_food">Alimentação</string>
+    <string name="value_food">R$ 540,00</string>
+    <string name="percent_food">23%</string>
+
+    <string name="category_transport">Transporte</string>
+    <string name="value_transport">R$ 392,70</string>
+    <string name="percent_transport">17%</string>
+
+    <string name="category_leisure">Lazer</string>
+    <string name="value_leisure">R$ 225,00</string>
+    <string name="percent_leisure">10%</string>
+
+    <string name="nav_home">Início</string>
+    <string name="nav_indicators">Indicadores</string>
+    <string name="nav_map">Mapa</string>
+    <string name="nav_history">Histórico</string>
+
+    <!--    DIALOG_LOCATION_ERROR-->
     <string name="location_error_title">Não conseguimos obter a sua localização</string>
     <string name="location_error_description">O sinal de GPS não foi encontrado, então este lançamento não pode ser salvo como atual. Registre a despesa pelo Novo lançamento, digitando o endereço manualmente.</string>
     <string name="btn_go_to_new_entry">Ir para Novo lançamento</string>
     <string name="btn_try_again">Tentar novamente</string>
     <string name="btn_cancel">Cancelar</string>
 
-<!--    BOTTOM_SHEET_CURRENT_EXPENSE-->
+    <!--    BOTTOM_SHEET_CURRENT_EXPENSE-->
     <string name="current_expense_title">Lançamento atual</string>
     <string name="captured_automatically">CAPTURADO AUTOMATICAMENTE</string>
     <string name="captured_address">Av. Paulista, 1578 – Bela Vista, São Paulo</string>
@@ -59,10 +97,10 @@
     <string name="placeholder_current_value">R$ 58,90</string>
     <string name="label_installments">Parcelas</string>
     <string name="placeholder_installments_count">3x</string>
-    <string name="placeholder_installments_calc">3 × R$ 19,63</string>
-    <string name="placeholder_current_desc">Almoço com a equipe</string>
+    <string name="placeholder_installments_calc">3x12</string>
+    <string name="placeholder_current_desc">aniversário do Diogo</string>
 
-<!--    BOTTOM_SHEET_NEW_EXPENSE-->
+    <!--    BOTTOM_SHEET_NEW_EXPENSE-->
     <string name="new_expense_title">Novo lançamento</string>
     <string name="new_expense_subtitle">Para despesas que não foram registradas na hora</string>
     <string name="label_address">Endereço</string>
@@ -80,7 +118,7 @@
     <string name="placeholder_expense_desc">Aniversário do Diogo</string>
     <string name="btn_save_expense">Salvar despesa</string>
 
-<!--    BOTTOM_SHEET_NEW_INCOME-->
+    <!--    BOTTOM_SHEET_NEW_INCOME-->
     <string name="new_income_title">Novo ganho</string>
     <string name="new_income_subtitle">Todos os campos são obrigatórios</string>
     <string name="label_value">Valor *</string>

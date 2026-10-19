@@ -8,6 +8,7 @@
 
     <!-- Conteúdo Com Rolagem -->
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -20,42 +21,40 @@
             android:paddingBottom="40dp">
 
             <!-- Background Azul do Header -->
-
-            <!-- Avatar do Usuário -->
             <View
                 android:id="@+id/headerBackground"
                 android:layout_width="0dp"
-                android:layout_height="550dp"
+                android:layout_height="320dp"
                 android:background="@drawable/header_background"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Avatar do Usuário (Aumentado de 48dp para 56dp) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAvatar"
-                android:layout_width="112dp"
-                android:layout_height="112dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="80dp"
+                app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:layout_width="52dp"
-                    android:layout_height="57dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="CV"
                     android:textColor="#123261"
-                    android:textSize="40sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Saudação e Data -->
+            <!-- Saudação e Data (Texto aumentado) -->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
@@ -63,7 +62,7 @@
                 android:layout_marginStart="14dp"
                 android:text="@string/home_date_example"
                 android:textColor="#D0E0F8"
-                android:textSize="28sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@id/cardAvatar"
                 app:layout_constraintTop_toTopOf="@id/cardAvatar" />
 
@@ -74,12 +73,12 @@
                 android:layout_marginTop="2dp"
                 android:text="@string/home_greeting"
                 android:textColor="@color/white"
-                android:textSize="44sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/tvDate"
                 app:layout_constraintTop_toBottomOf="@id/tvDate" />
 
-            <!-- Nome da App no Header -->
+            <!-- Nome da App no Header (Aumentado) -->
             <TextView
                 android:id="@+id/tvAppName"
                 android:layout_width="wrap_content"
@@ -87,13 +86,13 @@
                 android:layout_marginEnd="20dp"
                 android:text="@string/home_app_title"
                 android:textColor="@color/white"
-                android:textSize="36sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/cardAvatar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/cardAvatar" />
 
-            <!-- Saldo e Valores -->
+            <!-- Saldo e Valores (Aumentados) -->
             <TextView
                 android:id="@+id/tvBalanceLabel"
                 android:layout_width="wrap_content"
@@ -101,7 +100,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/home_balance_label"
                 android:textColor="#D0E0F8"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardAvatar" />
@@ -113,13 +112,13 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/home_balance_value"
                 android:textColor="@color/white"
-                android:textSize="76sp"
+                android:textSize="38sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvBalanceLabel" />
 
-            <!-- Chips de Ganhos e Despesas -->
+            <!-- Chips de Ganhos e Despesas (Aumentados) -->
             <LinearLayout
                 android:id="@+id/layoutChips"
                 android:layout_width="wrap_content"
@@ -133,15 +132,15 @@
                 <!-- Chip Ganhos -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="84dp"
+                    android:layout_height="42dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/bg_chip_home"
                     android:gravity="center"
                     android:paddingHorizontal="16dp">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:contentDescription="@null"
                         android:src="@drawable/arrow_upward"
                         app:tint="@color/white" />
@@ -152,21 +151,21 @@
                         android:layout_marginStart="8dp"
                         android:text="@string/home_income_value"
                         android:textColor="@color/white"
-                        android:textSize="28sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Chip Despesas -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="84dp"
+                    android:layout_height="42dp"
                     android:background="@drawable/bg_chip_home"
                     android:gravity="center"
                     android:paddingHorizontal="16dp">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:contentDescription="@null"
                         android:src="@drawable/arrow_down"
                         app:tint="@color/white" />
@@ -177,13 +176,13 @@
                         android:layout_marginStart="8dp"
                         android:text="@string/home_expense_value"
                         android:textColor="@color/white"
-                        android:textSize="28sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Card Branco de Atalhos Rápidos -->
+            <!-- Card Branco de Atalhos Rápidos (Ícones de 48dp -> 56dp, Textos 11sp -> 13sp) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardQuickActions"
                 android:layout_width="0dp"
@@ -207,6 +206,7 @@
 
                     <!-- Lançamento Atual -->
                     <LinearLayout
+                        android:id="@+id/currentExpenseButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -214,16 +214,16 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
                             app:cardBackgroundColor="#FDF0E9"
                             app:cardCornerRadius="18dp"
                             app:cardElevation="0dp"
                             app:strokeWidth="0dp">
 
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@null"
                                 android:src="@drawable/target"
@@ -237,12 +237,13 @@
                             android:gravity="center"
                             android:text="@string/action_current_entry"
                             android:textColor="#111827"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <!-- Novo Lançamento -->
                     <LinearLayout
+                        android:id="@+id/newExpenseButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -250,16 +251,16 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
                             app:cardBackgroundColor="#FDF0E9"
                             app:cardCornerRadius="18dp"
                             app:cardElevation="0dp"
                             app:strokeWidth="0dp">
 
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@null"
                                 android:src="@drawable/calendar"
@@ -273,12 +274,13 @@
                             android:gravity="center"
                             android:text="@string/action_new_entry"
                             android:textColor="#111827"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <!-- Novo Ganho -->
                     <LinearLayout
+                        android:id="@+id/newIncomeButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -286,16 +288,16 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
                             app:cardBackgroundColor="#E6F4EA"
                             app:cardCornerRadius="18dp"
                             app:cardElevation="0dp"
                             app:strokeWidth="0dp">
 
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@null"
                                 android:src="@drawable/arrow_upward"
@@ -309,7 +311,7 @@
                             android:gravity="center"
                             android:text="@string/action_new_income"
                             android:textColor="#111827"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -322,16 +324,16 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
                             app:cardBackgroundColor="#E8F0FE"
                             app:cardCornerRadius="18dp"
                             app:cardElevation="0dp"
                             app:strokeWidth="0dp">
 
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@null"
                                 android:src="@drawable/list"
@@ -345,7 +347,7 @@
                             android:gravity="center"
                             android:text="@string/action_history"
                             android:textColor="#111827"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -361,19 +363,19 @@
                 android:layout_marginTop="28dp"
                 android:text="@string/section_expenses_by_type"
                 android:textColor="#111827"
-                android:textSize="36sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardQuickActions" />
 
             <TextView
-                android:id="@+id/btnIndicators"
+                android:id="@+id/indicatorsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/action_see_indicators"
                 android:textColor="#255493"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/tvExpensesTypeTitle"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -399,16 +401,16 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         app:cardBackgroundColor="#FDF0E9"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/house"
@@ -421,14 +423,14 @@
                         android:layout_marginTop="8dp"
                         android:text="Moradia"
                         android:textColor="#374151"
-                        android:textSize="26sp" />
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="R$ 1.200"
                         android:textColor="#111827"
-                        android:textSize="28sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -441,16 +443,16 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         app:cardBackgroundColor="#FDF0E9"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/fork_knife"
@@ -463,14 +465,14 @@
                         android:layout_marginTop="8dp"
                         android:text="Alimentação"
                         android:textColor="#374151"
-                        android:textSize="26sp" />
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="R$ 540"
                         android:textColor="#111827"
-                        android:textSize="28sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -483,16 +485,16 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         app:cardBackgroundColor="#E6F4EA"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/car"
@@ -505,14 +507,14 @@
                         android:layout_marginTop="8dp"
                         android:text="Transporte"
                         android:textColor="#374151"
-                        android:textSize="26sp" />
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="R$ 392"
                         android:textColor="#111827"
-                        android:textSize="28sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -525,16 +527,16 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         app:cardBackgroundColor="#E8F0FE"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
                         <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:contentDescription="@null"
                             android:src="@drawable/star"
@@ -547,20 +549,20 @@
                         android:layout_marginTop="8dp"
                         android:text="Lazer"
                         android:textColor="#374151"
-                        android:textSize="26sp" />
+                        android:textSize="13sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="R$ 225"
                         android:textColor="#111827"
-                        android:textSize="28sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Seção: Últimos lançamentos -->
+            <!-- Seção: Últimos lançamentos (Textos maiores) -->
             <TextView
                 android:id="@+id/tvRecentTitle"
                 android:layout_width="wrap_content"
@@ -569,7 +571,7 @@
                 android:layout_marginTop="28dp"
                 android:text="@string/section_recent_entries"
                 android:textColor="#111827"
-                android:textSize="36sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layoutCategories" />
@@ -581,7 +583,7 @@
                 android:layout_marginEnd="20dp"
                 android:text="@string/action_see_all"
                 android:textColor="#255493"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/tvRecentTitle"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -616,18 +618,18 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/iconLunch"
-                            android:layout_width="65dp"
-                            android:layout_height="65dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             app:cardBackgroundColor="#FDF0E9"
                             app:cardCornerRadius="25dp"
                             app:cardElevation="0dp"
+                            app:strokeWidth="0dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:strokeWidth="0dp">
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:layout_width="43dp"
-                                android:layout_height="36dp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@null"
                                 android:src="@drawable/arrow_down"
@@ -641,24 +643,11 @@
                             android:layout_marginStart="14dp"
                             android:text="Almoço"
                             android:textColor="#111827"
-                            android:textSize="32sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toStartOf="@id/tvLunchValue"
                             app:layout_constraintStart_toEndOf="@id/iconLunch"
                             app:layout_constraintTop_toTopOf="@id/iconLunch" />
-
-                        <ImageView
-                            android:id="@+id/iconCloud"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/cloud_slash"
-                            app:tint="#8D3C1B"
-                            app:layout_constraintStart_toEndOf="@+id/iconLunch"
-                            app:layout_constraintTop_toBottomOf="@+id/tvLunchTitle" />
 
                         <TextView
                             android:id="@+id/tvLunchStatus"
@@ -667,9 +656,9 @@
                             android:layout_marginTop="2dp"
                             android:text="Aguardando sincronização"
                             android:textColor="#8D3C1B"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             app:layout_constraintEnd_toStartOf="@id/tvLunchValue"
-                            app:layout_constraintStart_toEndOf="@id/iconCloud"
+                            app:layout_constraintStart_toStartOf="@id/tvLunchTitle"
                             app:layout_constraintTop_toBottomOf="@id/tvLunchTitle" />
 
                         <TextView
@@ -678,7 +667,7 @@
                             android:layout_height="wrap_content"
                             android:text="- R$ 38,50"
                             android:textColor="#8D3C1B"
-                            android:textSize="32sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -699,8 +688,8 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/iconUber"
-                            android:layout_width="65dp"
-                            android:layout_height="65dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             app:cardBackgroundColor="#FDF0E9"
                             app:cardCornerRadius="25dp"
                             app:cardElevation="0dp"
@@ -709,8 +698,8 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@null"
                                 android:src="@drawable/arrow_down"
@@ -724,7 +713,7 @@
                             android:layout_marginStart="14dp"
                             android:text="Uber para o trabalho"
                             android:textColor="#111827"
-                            android:textSize="32sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toStartOf="@id/tvUberValue"
                             app:layout_constraintStart_toEndOf="@id/iconUber"
@@ -737,7 +726,7 @@
                             android:layout_marginTop="2dp"
                             android:text="Transporte · Uber · Pix"
                             android:textColor="#6B7280"
-                            android:textSize="26sp"
+                            android:textSize="13sp"
                             app:layout_constraintEnd_toStartOf="@id/tvUberValue"
                             app:layout_constraintStart_toStartOf="@id/tvUberTitle"
                             app:layout_constraintTop_toBottomOf="@id/tvUberTitle" />
@@ -748,7 +737,7 @@
                             android:layout_height="wrap_content"
                             android:text="- R$ 21,90"
                             android:textColor="#8D3C1B"
-                            android:textSize="32sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -760,7 +749,8 @@
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView
+        >
 
     <!-- Barra de Navegação Inferior -->
     <com.google.android.material.card.MaterialCardView
@@ -781,6 +771,7 @@
 
             <!-- Início (Ativo) -->
             <LinearLayout
+                android:id="@+id/homeButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -788,8 +779,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:contentDescription="@null"
                     android:src="@drawable/house"
                     app:tint="#255493" />
@@ -800,12 +791,13 @@
                     android:layout_marginTop="4dp"
                     android:text="Início"
                     android:textColor="#255493"
-                    android:textSize="24sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <!-- Indicadores -->
             <LinearLayout
+                android:id="@+id/indicatorsButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -813,8 +805,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:contentDescription="@null"
                     android:src="@drawable/bar_chart"
                     app:tint="#6B7280" />
@@ -825,7 +817,7 @@
                     android:layout_marginTop="4dp"
                     android:text="Indicadores"
                     android:textColor="#6B7280"
-                    android:textSize="24sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!-- Espaço central reservado para o Botão Flutuante (FAB) -->
@@ -843,8 +835,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:contentDescription="@null"
                     android:src="@drawable/map"
                     app:tint="#6B7280" />
@@ -855,7 +847,7 @@
                     android:layout_marginTop="4dp"
                     android:text="Mapa"
                     android:textColor="#6B7280"
-                    android:textSize="24sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <!-- Histórico -->
@@ -867,8 +859,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:contentDescription="@null"
                     android:src="@drawable/list"
                     app:tint="#6B7280" />
@@ -879,7 +871,7 @@
                     android:layout_marginTop="4dp"
                     android:text="Histórico"
                     android:textColor="#6B7280"
-                    android:textSize="24sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -888,12 +880,12 @@
     <!-- Botão Flutuante Central -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/fabCenter"
-        android:layout_width="136dp"
-        android:layout_height="136dp"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
         android:layout_marginBottom="28dp"
         app:cardBackgroundColor="#B84A22"
-        app:cardCornerRadius="80dp"
-        app:cardElevation="20dp"
+        app:cardCornerRadius="34dp"
+        app:cardElevation="12dp"
         app:strokeColor="#F3E5DC"
         app:strokeWidth="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -901,8 +893,8 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_gravity="center"
             android:contentDescription="@null"
             android:src="@drawable/target"

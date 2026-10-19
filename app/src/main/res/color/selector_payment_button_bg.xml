@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Cor de fundo quando SELECIONADO -->
+    <item android:color="#FDF0E9" android:state_checked="true" />
+
+    <!-- Cor de fundo transparente quando NÃO selecionado -->
+    <item android:color="@android:color/transparent" />
+</selector>

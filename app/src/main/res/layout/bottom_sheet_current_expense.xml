@@ -84,7 +84,7 @@
                     android:layout_marginStart="8dp"
                     android:text="@string/captured_automatically"
                     android:textColor="#255493"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/icCheck"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +110,7 @@
                     android:layout_marginStart="8dp"
                     android:text="@string/captured_address"
                     android:textColor="#374151"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@id/icLocation"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/icLocation"
@@ -190,8 +190,6 @@
             android:background="@drawable/bg_expense_value_input"
             android:inputType="numberDecimal"
             android:paddingHorizontal="16dp"
-            android:text="@string/placeholder_current_value"
-            android:textColor="#111827"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +214,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:checkedButton="@id/btnPaymentCredit"
+            app:checkedButton="@id/btnPaymentCash"
             app:singleSelection="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -230,9 +228,11 @@
                 android:layout_weight="1"
                 android:text="@string/payment_cash"
                 android:textAllCaps="false"
-                android:textColor="#111827"
                 android:textSize="13sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="12dp"
+                app:backgroundTint="@color/selector_payment_button_bg"
+                app:strokeColor="@color/selector_payment_button_text"
+                android:textColor="@color/selector_payment_button_text"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPaymentPix"
@@ -242,9 +242,11 @@
                 android:layout_weight="1"
                 android:text="@string/payment_pix"
                 android:textAllCaps="false"
-                android:textColor="#111827"
                 android:textSize="13sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="12dp"
+                app:backgroundTint="@color/selector_payment_button_bg"
+                app:strokeColor="@color/selector_payment_button_text"
+                android:textColor="@color/selector_payment_button_text"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPaymentDebit"
@@ -254,9 +256,11 @@
                 android:layout_weight="1"
                 android:text="@string/payment_debit"
                 android:textAllCaps="false"
-                android:textColor="#111827"
                 android:textSize="13sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="12dp"
+                app:backgroundTint="@color/selector_payment_button_bg"
+                app:strokeColor="@color/selector_payment_button_text"
+                android:textColor="@color/selector_payment_button_text"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnPaymentCredit"
@@ -264,13 +268,12 @@
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_weight="1"
-                android:backgroundTint="#FDF0E9"
                 android:text="@string/payment_credit"
                 android:textAllCaps="false"
-                android:textColor="#B84A22"
-                android:textStyle="bold"
                 app:cornerRadius="12dp"
-                app:strokeColor="#B84A22" />
+                app:backgroundTint="@color/selector_payment_button_bg"
+                app:strokeColor="@color/selector_payment_button_text"
+                android:textColor="@color/selector_payment_button_text" />
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
 

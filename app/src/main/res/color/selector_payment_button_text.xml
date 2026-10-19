@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Cor quando o botão estiver SELECIONADO -->
+    <item android:color="#B84A22" android:state_checked="true" />
+
+    <!-- Cor padrão quando NÃO estiver selecionado -->
+    <item android:color="#111827" />
+</selector>
