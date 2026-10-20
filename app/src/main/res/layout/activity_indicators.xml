@@ -75,7 +75,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/placeholder_month_year"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -237,7 +236,6 @@
                         </LinearLayout>
 
                         <!-- Repetir lógica similar para os outros meses (Mai, Jun, Jul, Ago, Set) -->
-                        <!-- Mês Ativo (Set) -->
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -391,7 +389,7 @@
 
             </LinearLayout>
 
-            <!-- Card: Detalhamento por Categoria/Pagamento -->
+            <!-- Card: Detalhamento por Pagamento -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDetails"
                 android:layout_width="0dp"
@@ -410,238 +408,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="32dp">
+                    android:padding="20dp">
 
-                    <!-- Abas Alternáveis -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-
-                        android:padding="4dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_tab_active"
-                            android:gravity="center"
-                            android:text="@string/tab_by_type"
-                            android:textColor="#6B7280"
-                            android:textSize="14sp"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/tab_by_payment"
-                            android:textColor="#6B7280"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <!-- Lista de Categorias com Progresso -->
-
-                    <!-- Moradia -->
-                    <LinearLayout
+                    <!-- Cabeçalho/Título da Seção de Filtragem -->
+                    <TextView
+                        android:id="@+id/tvDetailsTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:orientation="vertical">
+                        android:gravity="center"
+                        android:text="@string/tab_by_payment"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawablePadding="8dp"
-                                android:text="@string/category_housing"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:drawableStartCompat="@drawable/dot_dark_brown" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toStartOf="@id/tvPercentHousing"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/value_housing"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvPercentHousing"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="@string/percent_housing"
-                                android:textColor="#6B7280"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                        <com.google.android.material.progressindicator.LinearProgressIndicator
-                            android:layout_width="match_parent"
-                            android:layout_height="8dp"
-                            android:layout_marginTop="8dp"
-                            android:progress="51"
-                            app:indicatorColor="#8B3214"
-                            app:trackColor="#F3F4F6"
-                            app:trackCornerRadius="4dp" />
-                    </LinearLayout>
-
-                    <!-- Alimentação -->
-                    <LinearLayout
+                    <!-- Lista dinâmica de Categorias -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCategories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawablePadding="8dp"
-                                android:text="@string/category_food"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:drawableStartCompat="@drawable/dot_medium_brown" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toStartOf="@id/tvPercentFood"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/value_food"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvPercentFood"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="@string/percent_food"
-                                android:textColor="#6B7280"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                        <com.google.android.material.progressindicator.LinearProgressIndicator
-                            android:layout_width="match_parent"
-                            android:layout_height="8dp"
-                            android:layout_marginTop="8dp"
-                            android:progress="23"
-                            app:indicatorColor="#D97724"
-                            app:trackColor="#F3F4F6"
-                            app:trackCornerRadius="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawablePadding="8dp"
-                                android:text="@string/category_transport"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:drawableStartCompat="@drawable/dot_ochre" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toStartOf="@id/tvPercentTransport"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/value_transport"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvPercentTransport"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="@string/percent_transport"
-                                android:textColor="#6B7280"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                        <com.google.android.material.progressindicator.LinearProgressIndicator
-                            android:layout_width="match_parent"
-                            android:layout_height="8dp"
-                            android:layout_marginTop="8dp"
-                            android:progress="17"
-                            app:indicatorColor="#DC8A43"
-                            app:trackColor="#F3F4F6"
-                            app:trackCornerRadius="4dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:drawablePadding="8dp"
-                                android:text="@string/category_leisure"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                app:drawableStartCompat="@drawable/dot_light_tan" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toStartOf="@id/tvPercentLeisure"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/value_leisure"
-                                android:textColor="#111827"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvPercentLeisure"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:text="@string/percent_leisure"
-                                android:textColor="#6B7280"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
-
-                        <com.google.android.material.progressindicator.LinearProgressIndicator
-                            android:layout_width="match_parent"
-                            android:layout_height="8dp"
-                            android:layout_marginTop="8dp"
-                            android:progress="10"
-                            app:indicatorColor="#E6B36A"
-                            app:trackColor="#F3F4F6"
-                            app:trackCornerRadius="4dp" />
-                    </LinearLayout>
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_category" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -748,7 +535,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/calendar"
+                    android:src="@drawable/list"
                     app:tint="#6B7280" />
 
                 <TextView

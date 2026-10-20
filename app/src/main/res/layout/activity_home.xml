@@ -98,7 +98,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/home_balance_label"
                 android:textColor="#D0E0F8"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"

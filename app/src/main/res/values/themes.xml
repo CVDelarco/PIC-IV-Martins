@@ -4,6 +4,13 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    <style name="CustomMaterialDatePicker" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <!-- Main accent color (header, selected date circle, confirmation buttons) -->
+        <item name="colorPrimary">#255493</item>
+
+        <!-- Text color inside header -->
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
 
     <style name="Theme.PIC" parent="Base.Theme.PIC" />
 </resources>

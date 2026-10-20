@@ -13,7 +13,7 @@
     <string name="home_greeting">Olá, Caio</string>
     <string name="home_date_example">Sexta, 25 de setembro</string>
     <string name="home_balance_label">Saldo de setembro</string>
-    <string name="home_balance_value">R$ 1.842,30</string>
+    <string name="home_balance_value">R$ 1.842000,30</string>
     <string name="home_income_value">Ganhos R$ 4.200,00</string>
     <string name="home_expense_value">Despesas R$ 2.357,70</string>
 
@@ -46,7 +46,7 @@
     <string name="title_indicators">Indicadores</string>
     <string name="placeholder_month_year">Setembro de 2026</string>
     <string name="label_month_balance">Saldo do mês</string>
-    <string name="placeholder_month_balance">R$ 1.842,30</string>
+    <string name="placeholder_month_balance">R$ 1.842000,30</string>
 
     <string name="title_gains_expenses">Ganhos x despesas</string>
     <string name="legend_gains">Ganhos</string>
