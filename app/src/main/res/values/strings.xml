@@ -40,7 +40,7 @@
     <string name="label_password">Senha</string>
     <string name="hint_new_password">Deixe em branco para manter</string>
     <string name="expense_types_title">Tipos e subtipos de despesa</string>
-    <string name="btn_new_type">+ Novo tipo</string>
+    <string name="btn_new_type">+ Novo subtipo</string>
 
     <!--    ACTIVITY_INDICATORS-->
     <string name="title_indicators">Indicadores</string>
@@ -122,4 +122,17 @@
     <string name="label_description">Descrição *</string>
     <string name="label_date">Data *</string>
     <string name="btn_save_income">Salvar ganho</string>
+
+    <!--    HISTORY-->
+    <string name="title_history">Histórico</string>
+    <string name="hint_search">Buscar por descrição</string>
+    <string name="filter_all">Todos</string>
+    <string name="filter_expenses">Despesas</string>
+    <string name="filter_gains">Ganhos</string>
+    <string name="filter_more">Filtros</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Excluir</string>
+    <string name="btn_previous">Anterior</string>
+    <string name="btn_next">Próxima</string>
+    <string name="pagination_text">Página 1 de 6</string>
 </resources>

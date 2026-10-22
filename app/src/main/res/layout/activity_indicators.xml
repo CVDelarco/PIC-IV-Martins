@@ -503,7 +503,7 @@
                 android:layout_weight="1" />
 
             <LinearLayout
-                android:id="@+id/btnMapa"
+                android:id="@+id/MapaButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -525,7 +525,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/btnHistorico"
+                android:id="@+id/HistoricoButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

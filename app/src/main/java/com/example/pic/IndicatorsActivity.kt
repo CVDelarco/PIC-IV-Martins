@@ -18,7 +18,7 @@ class IndicatorsActivity : AppCompatActivity() {
     private lateinit var adapter: CategoryAdapter
     private var isDescending = true
     private var currentYearMonth: YearMonth = YearMonth.now()
-    val tvDetailsTitle = findViewById<TextView>(R.id.tvDetailsTitle)
+    private lateinit var tvDetailsTitle: TextView
 
     // Lista original com todos os dados
     private val allCategories = listOf(
@@ -37,8 +37,10 @@ class IndicatorsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_indicators)
 
+        tvDetailsTitle = findViewById(R.id.tvDetailsTitle)
         val homeButton = findViewById<View>(R.id.homeButton)
         val indicatorsButton = findViewById<View>(R.id.indicatorsButton)
+        val historyButton = findViewById<View>(R.id.HistoricoButton)
         val fabCenter = findViewById<View>(R.id.fabCenter)
         val tvMonthYear = findViewById<TextView>(R.id.tvMonthYear)
         val btnPrevMonth = findViewById<ImageView>(R.id.btnPrevMonth)
@@ -52,7 +54,7 @@ class IndicatorsActivity : AppCompatActivity() {
         adapter.submitList(getSortedCategories())
         updateTitleText(tvDetailsTitle)
 
-        tvDetailsTitle?.setOnClickListener {
+        tvDetailsTitle.setOnClickListener {
             isDescending = !isDescending // Toggle state
 
             // Update the RecyclerView with the new sorted list
@@ -62,7 +64,7 @@ class IndicatorsActivity : AppCompatActivity() {
             updateTitleText(tvDetailsTitle)
         }
 
-        tvDetailsTitle?.setOnClickListener {
+        tvDetailsTitle.setOnClickListener {
             isDescending = !isDescending
             adapter.submitList(getSortedCategories())
             updateTitleText(tvDetailsTitle)
@@ -80,14 +82,17 @@ class IndicatorsActivity : AppCompatActivity() {
 
         //Clique para Avançar 1 Mês
         btnNextMonth?.setOnClickListener {
-            currentYearMonth = currentYearMonth.plusMonths(1)
-            updateMonthYearDisplay(tvMonthYear)
-            onMonthChanged()
+            if(currentYearMonth < YearMonth.now()){
+                    currentYearMonth = currentYearMonth.plusMonths(1)
+                    updateMonthYearDisplay(tvMonthYear)
+                    onMonthChanged()
+                }
         }
 
         tvMonthYear?.text = formattedDate
         homeButton?.setOnClickListener { showHomeActivity() }
         fabCenter?.setOnClickListener { showCurrentExpenseBottomSheet() }
+        historyButton?.setOnClickListener { showHistoryActivity() }
 
         indicatorsButton?.setOnClickListener {
             // Como o usuário já está nessa activity, rola a página suavemente de volta para o topo
@@ -98,6 +103,11 @@ class IndicatorsActivity : AppCompatActivity() {
 
     private fun showHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showHistoryActivity(){
+        val intent = Intent(this, HistoryActivity::class.java)
         startActivity(intent)
     }
 
@@ -118,8 +128,6 @@ class IndicatorsActivity : AppCompatActivity() {
      * Método chamado sempre que o usuário muda o mês
      */
     private fun onMonthChanged() {
-        val selectedMonth = currentYearMonth.monthValue
-        val selectedYear = currentYearMonth.year
         getSortedCategories()
         updateTitleText(tvDetailsTitle)
     }

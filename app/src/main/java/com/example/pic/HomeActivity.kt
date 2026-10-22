@@ -27,7 +27,9 @@ class HomeActivity : AppCompatActivity() {
         val currentExpenseButton = findViewById<View>(R.id.currentExpenseButton)
         val newExpenseButton = findViewById<View>(R.id.newExpenseButton)
         val newIncomeButton = findViewById<View>(R.id.newIncomeButton)
-        //val historico
+        val HistoricoLayout = findViewById<View>(R.id.HistoricoLayout)
+        val btnSeeAll = findViewById<View>(R.id.btnSeeAll)
+        val newHistoryButton = findViewById<View>(R.id.newHistoryButton)
         val indicatorsText = findViewById<View>(R.id.indicatorsText)
         val homeButton = findViewById<View>(R.id.homeButton)
         val indicatorsButton = findViewById<View>(R.id.indicatorsButton)
@@ -44,7 +46,9 @@ class HomeActivity : AppCompatActivity() {
         currentExpenseButton?.setOnClickListener { showCurrentExpenseBottomSheet() }
         newExpenseButton?.setOnClickListener { showNewExpenseBottomSheet() }
         newIncomeButton?.setOnClickListener { showNewIncomeBottomSheet() }
-        //new historico
+        HistoricoLayout?.setOnClickListener { showHistory() }
+        btnSeeAll?.setOnClickListener { showHistory() }
+        newHistoryButton?.setOnClickListener { showHistory() }
         indicatorsButton?.setOnClickListener { showIndicatorsActivity() }
         fabCenter?.setOnClickListener { showCurrentExpenseBottomSheet() }
         indicatorsText?.setOnClickListener { showIndicatorsActivity() }
@@ -75,6 +79,12 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
     }
+
+    private fun showHistory() {
+        val intent = Intent(this, HistoryActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun showIndicatorsActivity() {
         val intent = Intent(this, IndicatorsActivity::class.java)
         startActivity(intent)
