@@ -219,12 +219,12 @@
             android:textColor="#111827"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/btnNewType"
+            app:layout_constraintEnd_toStartOf="@id/btnNewSubtype"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardAccountData" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNewType"
+            android:id="@+id/btnNewSubtype"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -238,6 +238,74 @@
             app:layout_constraintTop_toTopOf="@id/tvExpensesTitle"
             app:strokeColor="#1E40AF"
             app:strokeWidth="1dp" />
+
+        <!-- Card: Alimentação -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAlimentacao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnNewSubtype">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvAlimentacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alimentação"
+                    android:textColor="#111827"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupAlimentacao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:chipSpacingHorizontal="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAlimentacao">
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mercado"
+                        app:chipBackgroundColor="#EFEFEA"
+                        app:chipCornerRadius="12dp"
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true">
+                    </com.google.android.material.chip.Chip>
+
+
+                    <com.google.android.material.chip.Chip
+                        style="@style/Widget.MaterialComponents.Chip.Action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Restaurante"
+                        app:chipBackgroundColor="#EFEFEA"
+                        app:chipCornerRadius="12dp"
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
+                </com.google.android.material.chip.ChipGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Card: Moradia -->
         <com.google.android.material.card.MaterialCardView
@@ -253,7 +321,7 @@
             app:strokeWidth="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnNewType">
+            app:layout_constraintTop_toBottomOf="@id/cardAlimentacao">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -271,30 +339,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/btnDeleteMoradia"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/trash"
-                    app:tint="#C25E23"
-                    app:layout_constraintBottom_toBottomOf="@id/tvMoradia"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvMoradia" />
-
-                <ImageView
-                    android:id="@+id/btnEditMoradia"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/pencil"
-                    app:tint="#374151"
-                    app:layout_constraintBottom_toBottomOf="@id/tvMoradia"
-                    app:layout_constraintEnd_toStartOf="@id/btnDeleteMoradia"
-                    app:layout_constraintTop_toTopOf="@id/tvMoradia" />
 
                 <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupMoradia"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -310,7 +357,8 @@
                         android:text="Aluguel"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -319,7 +367,8 @@
                         android:text="Condomínio"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -328,7 +377,8 @@
                         android:text="Energia"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
                 </com.google.android.material.chip.ChipGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -364,32 +414,11 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/btnDeleteTransporte"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/trash"
-                    app:tint="#C25E23"
-                    app:layout_constraintBottom_toBottomOf="@id/tvTransporte"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvTransporte" />
-
-                <ImageView
-                    android:id="@+id/btnEditTransporte"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/pencil"
-                    app:tint="#374151"
-                    app:layout_constraintBottom_toBottomOf="@id/tvTransporte"
-                    app:layout_constraintEnd_toStartOf="@id/btnDeleteTransporte"
-                    app:layout_constraintTop_toTopOf="@id/tvTransporte" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:closeIconVisible="true"/>
 
                 <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupTransporte"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -405,7 +434,8 @@
                         android:text="Uber"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -414,7 +444,8 @@
                         android:text="Combustível"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -423,15 +454,16 @@
                         android:text="Ônibus"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
                 </com.google.android.material.chip.ChipGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Card: Alimentação -->
+        <!-- Card: Lazer -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAlimentacao"
+            android:id="@+id/cardLazer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -451,46 +483,26 @@
                 android:padding="16dp">
 
                 <TextView
-                    android:id="@+id/tvAlimentacao"
+                    android:id="@+id/tvLazer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Alimentação"
+                    android:text="Lazer"
                     android:textColor="#111827"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/btnDeleteAlimentacao"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/trash"
-                    app:tint="#C25E23"
-                    app:layout_constraintBottom_toBottomOf="@id/tvAlimentacao"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvAlimentacao" />
-
-                <ImageView
-                    android:id="@+id/btnEditAlimentacao"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/pencil"
-                    app:layout_constraintEnd_toStartOf="@+id/btnDeleteAlimentacao"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#374151" />
+                    app:closeIconVisible="true"/>
 
                 <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupLazer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     app:chipSpacingHorizontal="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvAlimentacao">
+                    app:layout_constraintTop_toBottomOf="@id/tvLazer">
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -499,7 +511,8 @@
                         android:text="Mercado"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
 
                     <com.google.android.material.chip.Chip
                         style="@style/Widget.MaterialComponents.Chip.Action"
@@ -508,7 +521,8 @@
                         android:text="Restaurante"
                         app:chipBackgroundColor="#EFEFEA"
                         app:chipCornerRadius="12dp"
-                        app:strokeWidth="0dp" />
+                        app:strokeWidth="0dp"
+                        app:closeIconVisible="true"/>
                 </com.google.android.material.chip.ChipGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

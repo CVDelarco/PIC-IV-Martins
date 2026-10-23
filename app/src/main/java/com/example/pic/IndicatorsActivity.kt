@@ -55,16 +55,6 @@ class IndicatorsActivity : AppCompatActivity() {
         updateTitleText(tvDetailsTitle)
 
         tvDetailsTitle.setOnClickListener {
-            isDescending = !isDescending // Toggle state
-
-            // Update the RecyclerView with the new sorted list
-            adapter.submitList(getSortedCategories())
-
-            // Update title visual indicator (e.g., ▲ / ▼)
-            updateTitleText(tvDetailsTitle)
-        }
-
-        tvDetailsTitle.setOnClickListener {
             isDescending = !isDescending
             adapter.submitList(getSortedCategories())
             updateTitleText(tvDetailsTitle)
@@ -129,7 +119,7 @@ class IndicatorsActivity : AppCompatActivity() {
      */
     private fun onMonthChanged() {
         getSortedCategories()
-        updateTitleText(tvDetailsTitle)
+
     }
 
     private fun getSortedCategories(): List<Category>{

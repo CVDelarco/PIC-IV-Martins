@@ -39,7 +39,7 @@
     <string name="label_email">E-mail</string>
     <string name="label_password">Senha</string>
     <string name="hint_new_password">Deixe em branco para manter</string>
-    <string name="expense_types_title">Tipos e subtipos de despesa</string>
+    <string name="expense_types_title">Tipos e subtipos</string>
     <string name="btn_new_type">+ Novo subtipo</string>
 
     <!--    ACTIVITY_INDICATORS-->
@@ -122,6 +122,10 @@
     <string name="label_description">Descrição *</string>
     <string name="label_date">Data *</string>
     <string name="btn_save_income">Salvar ganho</string>
+
+    <!--    BOTTOM_SHEET_NEW_SUBTYPE-->
+    <string name="new_subtype_title">Novo subtipo</string>
+    <string name="btn_save_subtype">Salvar subtipo</string>
 
     <!--    HISTORY-->
     <string name="title_history">Histórico</string>
