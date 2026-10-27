@@ -40,6 +40,7 @@ class IndicatorsActivity : AppCompatActivity() {
         tvDetailsTitle = findViewById(R.id.tvDetailsTitle)
         val homeButton = findViewById<View>(R.id.homeButton)
         val indicatorsButton = findViewById<View>(R.id.indicatorsButton)
+        val mapButton = findViewById<View>(R.id.mapButton)
         val historyButton = findViewById<View>(R.id.HistoricoButton)
         val fabCenter = findViewById<View>(R.id.fabCenter)
         val tvMonthYear = findViewById<TextView>(R.id.tvMonthYear)
@@ -82,6 +83,7 @@ class IndicatorsActivity : AppCompatActivity() {
         tvMonthYear?.text = formattedDate
         homeButton?.setOnClickListener { showHomeActivity() }
         fabCenter?.setOnClickListener { showCurrentExpenseBottomSheet() }
+        mapButton?.setOnClickListener { showMapActivity() }
         historyButton?.setOnClickListener { showHistoryActivity() }
 
         indicatorsButton?.setOnClickListener {
@@ -93,6 +95,11 @@ class IndicatorsActivity : AppCompatActivity() {
 
     private fun showHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun showMapActivity() {
+        val intent = Intent(this, MapActivity::class.java)
         startActivity(intent)
     }
 

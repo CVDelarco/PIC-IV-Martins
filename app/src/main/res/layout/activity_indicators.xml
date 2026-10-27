@@ -503,7 +503,7 @@
                 android:layout_weight="1" />
 
             <LinearLayout
-                android:id="@+id/MapaButton"
+                android:id="@+id/mapButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

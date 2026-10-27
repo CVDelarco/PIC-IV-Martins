@@ -131,12 +131,25 @@
     <string name="title_history">Histórico</string>
     <string name="hint_search">Buscar por descrição</string>
     <string name="filter_all">Todos</string>
-    <string name="filter_expenses">Despesas</string>
-    <string name="filter_gains">Ganhos</string>
-    <string name="filter_more">Filtros</string>
+    <string name="filter_type">Tipo</string>
+    <string name="filter_payment">Pagamento</string>
+    <string name="filter_value">Valor</string>
     <string name="btn_edit">Editar</string>
     <string name="btn_delete">Excluir</string>
     <string name="btn_previous">Anterior</string>
     <string name="btn_next">Próxima</string>
     <string name="pagination_text">Página 1 de 6</string>
+
+<!--    MAP-->
+
+    <string name="title_map">Mapa de gastos</string>
+    <string name="btn_mes">Este mês</string>
+    <string name="btn_meses">3 meses</string>
+    <string name="btn_tudo">Tudo</string>
+    <string name="btn_tipo">Por tipo</string>
+    <string name="btn_minus">-</string>
+    <string name="btn_plus">+</string>
+    <string name="text_mais">Mais</string>
+    <string name="text_menos">Menos</string>
+    <string name="btn_lancamentos">Ver lançamentos da região</string>
 </resources>

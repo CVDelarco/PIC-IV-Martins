@@ -4,58 +4,323 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F7F4">
+    android:background="#EBE7DE"> <!-- Cor de fundo simulando a cor base do mapa -->
 
-    <!-- Conteúdo com Rolagem -->
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+    <!-- Placeholder/Falso Mapa (Pode ser substituído pelo fragment do Google Maps posteriormente) -->
+    <View
+        android:id="@+id/mapPlaceholder"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- HEADER / FILTROS -->
+    <!-- Fundo Azul do Header com bordas arredondadas -->
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:background="@drawable/header_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/title_map"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Scroll horizontal com Chips de filtro -->
+    <HorizontalScrollView
+        android:id="@+id/scrollFilters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="2dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Filtro Ativo -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilterCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/btn_mes"
+                android:textAllCaps="false"
+                android:textColor="#255493"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="22dp" />
+
+            <!-- Filtros Inativos (Fundo translúcido) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilter3Months"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/btn_meses"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:backgroundTint="#33FFFFFF"
+                app:cornerRadius="22dp"
+                app:strokeWidth="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilterAll"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/btn_tudo"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:backgroundTint="#33FFFFFF"
+                app:cornerRadius="22dp"
+                app:strokeWidth="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilterType"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:text="@string/btn_tipo"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:backgroundTint="#33FFFFFF"
+                app:cornerRadius="22dp"
+                app:strokeWidth="0dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- CARD FLUTUANTE DA REGIÃO (Parte Inferior) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRegionInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="24dp">
+            android:padding="20dp">
 
-            <!-- Header Azul -->
-            <View
-                android:id="@+id/headerBackground"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:background="@drawable/header_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Título: Histórico -->
+            <!-- Título e Subtítulo da Região -->
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvRegionName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/title_history"
-                android:textColor="@color/white"
-                android:textSize="22sp"
+                android:text="Bela Vista"
+                android:textColor="#111827"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+            <TextView
+                android:id="@+id/tvRegionDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="12 lançamentos - 01 a 25 set"
+                android:textColor="#6B7280"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRegionName" />
 
-    <!-- Barra de Navegação Inferior -->
+            <!-- Valor Total -->
+            <TextView
+                android:id="@+id/tvRegionTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$ 684,20"
+                android:textColor="#B84A22"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tvRegionDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvRegionName" />
+
+            <!-- Barra Segmentada de Intensidade -->
+            <LinearLayout
+                android:id="@+id/layoutIntensityBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tvRegionDetails">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_menos"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp" />
+
+                <!-- Container arredondado para a barra -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="6dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#FCE3C5" />
+                        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#F5BE94" />
+                        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#E0834B" />
+                        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#BC5625" />
+                        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#57220C" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_mais"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Botão Ver Lançamentos -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewEntries"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/btn_lancamentos"
+                android:textAllCaps="false"
+                android:textColor="#255493"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:backgroundTint="#E8F0FE"
+                app:layout_constraintTop_toBottomOf="@id/layoutIntensityBar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- CONTROLES DO MAPA (Botões de Zoom e Centralizar) -->
+    <!-- Agrupamento de Zoom (+ / -) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMapZoom"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@id/cardMapLocate"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Zoom In  -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:text="@string/btn_plus"
+                android:textColor="#374151"
+                android:textSize="24sp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E5E7EB" />
+
+            <!-- Zoom Out-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:text="@string/btn_minus"
+                android:textColor="#374151"
+                android:textSize="24sp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Localização Atual -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMapLocate"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="0dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/cardRegionInfo"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:contentDescription="localização atual"
+            android:src="@drawable/target"
+            app:tint="#255493" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- BARRA DE NAVEGAÇÃO INFERIOR -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomNavContainer"
         android:layout_width="0dp"
         android:layout_height="72dp"
         android:background="@color/white"
-        android:elevation="2dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -117,6 +382,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
+            <!-- Mapa (Estado Ativo) -->
             <LinearLayout
                 android:id="@+id/btnMapa"
                 android:layout_width="0dp"
@@ -141,7 +407,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Histórico (Ativo) -->
+            <!-- Histórico -->
             <LinearLayout
                 android:id="@+id/btnHistorico"
                 android:layout_width="0dp"
@@ -177,11 +443,11 @@
         app:cardBackgroundColor="#B84A22"
         app:cardCornerRadius="34dp"
         app:cardElevation="12dp"
-        app:strokeColor="#F3E5DC"
-        app:strokeWidth="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#F3E5DC"
+        app:strokeWidth="4dp">
 
         <ImageView
             android:layout_width="32dp"
