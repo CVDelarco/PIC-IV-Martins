@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "485896666860",
+    "project_id": "pic-martins",
+    "storage_bucket": "pic-martins.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485896666860:android:7503051ec0243a48596fc9",
+        "android_client_info": {
+          "package_name": "com.example.pic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByDCUuO8qtPWdqX_BMGVx6IqsplLyAkgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

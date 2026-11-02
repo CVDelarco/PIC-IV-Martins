@@ -5,6 +5,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.widget.TextView
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -130,5 +133,17 @@ class HomeActivity : AppCompatActivity() {
     private fun showHistory() {
         val intent = Intent(this, HistoryActivity::class.java)
         startActivity(intent)
+    }
+
+    fun isNetworkAvailable(context: Context): Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+        return when{
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            else -> false
+        }
     }
 }

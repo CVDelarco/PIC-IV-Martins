@@ -10,7 +10,15 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.pic.model.LocationData
+import com.example.pic.model.Transaction
+import com.example.pic.model.TransactionType
+import com.example.pic.repository.FinanceRepository
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.firestore.GeoPoint
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -42,6 +50,8 @@ class CurrentExpenseBottomSheetFragment : BottomSheetDialogFragment() {
 
         val dateFormat = SimpleDateFormat("dd/MM · HH:mm", localeBR)
         tvCapturedDateTime?.text = dateFormat.format(Date())
+
+        val repository = FinanceRepository()
 
         // Set initial installment counter text
         tvInstallmentsCount?.text = "${installmentCount}x"
@@ -104,7 +114,35 @@ class CurrentExpenseBottomSheetFragment : BottomSheetDialogFragment() {
 
         view.findViewById<View>(R.id.btnClose)?.setOnClickListener { dismiss() }
         view.findViewById<View>(R.id.btnCancel)?.setOnClickListener { dismiss() }
-        view.findViewById<View>(R.id.btnSaveExpense)?.setOnClickListener { dismiss() }
+        view.findViewById<View>(R.id.btnSaveExpense)?.setOnClickListener {
+            val novaDespesa = Transaction(
+                type = TransactionType.EXPENSE.name,
+                amount = 58.90, // Pegar o valor limpo do etValue
+                installments = installmentCount,
+                installmentValue = 58.90 / installmentCount,
+                description = "Almoço com a equipe",
+                category = view.findViewById<AutoCompleteTextView>(R.id.actType)?.text.toString(),
+                subcategory = view.findViewById<AutoCompleteTextView>(R.id.actSubtype)?.text.toString(),
+                paymentMethod = "Crédito",
+                yearMonth = "2026-09",
+                location = LocationData(
+                    address = "Av. Paulista, 1578 – Bela Vista, São Paulo",
+                    neighborhood = "Bela Vista",
+                    coordinates = GeoPoint(-23.5614, -46.6559)
+                )
+            )
+
+            // Dispara a coroutine no ciclo de vida do Fragment
+            lifecycleScope.launch {
+                val result = repository.saveTransaction(novaDespesa)
+                result.onSuccess {
+                    Toast.makeText(requireContext(), "Despesa salva com sucesso!", Toast.LENGTH_SHORT).show()
+                    dismiss()
+                }.onFailure { erro ->
+                    Toast.makeText(requireContext(), "Erro ao salvar: ${erro.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun updateInstallmentCalculation(etValue: EditText?, tvInstallmentsCalc: TextView?) {
