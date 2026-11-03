@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_bottom_sheet"
@@ -146,6 +145,8 @@
             app:boxStrokeColor="#D1D5DB"
             app:boxStrokeWidth="1dp"
             app:hintEnabled="false"
+            app:startIconDrawable="@drawable/calendar"
+            app:startIconTint="#374151"
             app:layout_constraintEnd_toStartOf="@id/tilTime"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblDate">

@@ -17,6 +17,8 @@ import com.example.pic.model.Transaction
 import com.example.pic.model.TransactionType
 import com.example.pic.repository.FinanceRepository
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.firebase.firestore.GeoPoint
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
@@ -115,16 +117,35 @@ class CurrentExpenseBottomSheetFragment : BottomSheetDialogFragment() {
         view.findViewById<View>(R.id.btnClose)?.setOnClickListener { dismiss() }
         view.findViewById<View>(R.id.btnCancel)?.setOnClickListener { dismiss() }
         view.findViewById<View>(R.id.btnSaveExpense)?.setOnClickListener {
+
+            val inputText = view.findViewById<EditText>(R.id.etValue)?.text.toString()
+            val cleanString = inputText.replace("\\D".toRegex(), "")
+            val cleanAmount = if (cleanString.isNotEmpty()) {
+                cleanString.toDouble() / 100.0
+            } else {
+                0.0
+            }
+
+            val toggleGroup = view.findViewById<MaterialButtonToggleGroup>(R.id.toggleGroupPayment)
+            val checkedButtonId = toggleGroup?.checkedButtonId ?: View.NO_ID
+            val selectedPaymentMethod = if (checkedButtonId != View.NO_ID) {
+                view.findViewById<MaterialButton>(checkedButtonId)?.text.toString()
+            } else {
+                "Não informado"
+            }
+
+            val currentYearMonth = SimpleDateFormat("yyyy-MM", Locale.getDefault()).format(Date())
+
             val novaDespesa = Transaction(
                 type = TransactionType.EXPENSE.name,
-                amount = 58.90, // Pegar o valor limpo do etValue
+                amount = cleanAmount,
                 installments = installmentCount,
-                installmentValue = 58.90 / installmentCount,
-                description = "Almoço com a equipe",
+                installmentValue = cleanAmount / installmentCount,
+                description = view.findViewById<EditText>(R.id.etDescription)?.text.toString(),
                 category = view.findViewById<AutoCompleteTextView>(R.id.actType)?.text.toString(),
                 subcategory = view.findViewById<AutoCompleteTextView>(R.id.actSubtype)?.text.toString(),
-                paymentMethod = "Crédito",
-                yearMonth = "2026-09",
+                paymentMethod = selectedPaymentMethod,
+                yearMonth = currentYearMonth,
                 location = LocationData(
                     address = "Av. Paulista, 1578 – Bela Vista, São Paulo",
                     neighborhood = "Bela Vista",

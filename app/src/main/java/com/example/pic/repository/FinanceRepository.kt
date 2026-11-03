@@ -1,16 +1,19 @@
 package com.example.pic.repository
 
+import com.example.pic.ExpenseCategory
 import com.example.pic.model.Transaction
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.tasks.await
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.Date
 
-class FinanceRepository(
+
+class  FinanceRepository(
     private val auth: FirebaseAuth = FirebaseAuth.getInstance(),
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 ) {
@@ -86,6 +89,74 @@ class FinanceRepository(
     suspend fun deleteTransaction(transactionId: String): Result<Unit> {
         return try {
             getUserTransactionsRef().document(transactionId).delete().await()
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun createDefaultFixedCategories() {
+        val uid = auth.currentUser?.uid ?: return
+        val categoriesRef = db.collection("users").document(uid).collection("categories")
+
+        val defaults = mapOf(
+            "alimentacao" to ExpenseCategory(id = "alimentacao", name = "Alimentação", subtypes = listOf("Mercado", "Restaurante", "Lanchonete")),
+            "moradia" to ExpenseCategory(id = "moradia", name = "Moradia", subtypes = listOf("Aluguel", "Condomínio", "Energia")),
+            "transporte" to ExpenseCategory(id = "transporte", name = "Transporte", subtypes = listOf("Uber", "Combustível", "Ônibus")),
+            "lazer" to ExpenseCategory(id = "lazer", name = "Lazer", subtypes = listOf("Cinema", "Bar", "Shows"))
+        )
+
+        // Salva usando IDs fixos em vez de IDs aleatórios
+        for ((id, category) in defaults) {
+            categoriesRef.document(id).set(category).await()
+        }
+    }
+
+    //Busca as categorias do usuário
+    suspend fun getCategories(): Result<List<ExpenseCategory>> {
+        return try {
+            val uid = auth.currentUser?.uid ?: throw Exception("Usuário não logado")
+
+            val snapshot = db.collection("users").document(uid)
+                .collection("categories")
+                .get()
+                .await()
+
+            val categories = snapshot.toObjects(ExpenseCategory::class.java)
+            Result.success(categories)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    // Adiciona um novo subtipo a um tipo existente
+    suspend fun addSubtype(categoryId: String, newSubtype: String): Result<Unit> {
+        return try {
+            val uid = auth.currentUser?.uid ?: throw Exception("Usuário não logado")
+
+            db.collection("users").document(uid)
+                .collection("categories").document(categoryId)
+                // arrayUnion adiciona o item se ele não existir, evitando duplicatas
+                .update("subtypes", FieldValue.arrayUnion(newSubtype))
+                .await()
+
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    // Remove um subtipo (quando o usuário excluir um Chip no Perfil)
+    suspend fun removeSubtype(categoryId: String, subtypeToRemove: String): Result<Unit> {
+        return try {
+            val uid = auth.currentUser?.uid ?: throw Exception("Usuário não logado")
+
+            db.collection("users").document(uid)
+                .collection("categories").document(categoryId)
+                // arrayRemove deleta a string específica da lista
+                .update("subtypes", FieldValue.arrayRemove(subtypeToRemove))
+                .await()
+
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)

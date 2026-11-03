@@ -6,11 +6,21 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.pic.model.LocationData
+import com.example.pic.model.Transaction
+import com.example.pic.model.TransactionType
+import com.example.pic.repository.FinanceRepository
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -40,6 +50,8 @@ class NewIncomeBottomSheetFragment : BottomSheetDialogFragment() {
         val etValue = view.findViewById<EditText>(R.id.etValue)
         val etDate = view.findViewById<TextInputEditText>(R.id.etDate)
         val tilDate = view.findViewById<TextInputLayout>(R.id.tilDate)
+        val repository = FinanceRepository()
+
 
         // 1. Currency Formatting TextWatcher for R$ prefix
         etValue?.addTextChangedListener(object : TextWatcher{
@@ -87,7 +99,36 @@ class NewIncomeBottomSheetFragment : BottomSheetDialogFragment() {
 
         view.findViewById<View>(R.id.btnClose)?.setOnClickListener { dismiss() }
         view.findViewById<View>(R.id.btnCancel)?.setOnClickListener { dismiss() }
-        view.findViewById<View>(R.id.btnSaveIncome)?.setOnClickListener { dismiss() }
+        view.findViewById<View>(R.id.btnSaveIncome)?.setOnClickListener {
+
+            val inputText = view.findViewById<EditText>(R.id.etValue)?.text.toString()
+            val cleanString = inputText.replace("\\D".toRegex(), "")
+            val cleanAmount = if (cleanString.isNotEmpty()) {
+                cleanString.toDouble() / 100.0
+            } else {
+                0.0
+            }
+
+            val currentYearMonth = SimpleDateFormat("yyyy-MM", Locale.getDefault()).format(Date())
+
+            val novaDespesa = Transaction(
+                type = TransactionType.INCOME.name,
+                amount = cleanAmount,
+                description = view.findViewById<EditText>(R.id.etDescription)?.text.toString(),
+                yearMonth = currentYearMonth,
+            )
+
+            // Dispara a coroutine no ciclo de vida do Fragment
+            lifecycleScope.launch {
+                val result = repository.saveTransaction(novaDespesa)
+                result.onSuccess {
+                    Toast.makeText(requireContext(), "Ganho salvo com sucesso!", Toast.LENGTH_SHORT).show()
+                    dismiss()
+                }.onFailure { erro ->
+                    Toast.makeText(requireContext(), "Erro ao salvar: ${erro.message}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun showDatePicker(etDate: TextInputEditText?) {
