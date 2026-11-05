@@ -1,17 +1,25 @@
 package com.example.pic
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.material.button.MaterialButton
 import androidx.core.graphics.toColorInt
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 
-class MapActivity : AppCompatActivity() {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private lateinit var map: GoogleMap
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1
     private lateinit var btnfilterCurrent: MaterialButton
     private lateinit var btnfilter3Months: MaterialButton
     private lateinit var btnfilterAll: MaterialButton
@@ -22,6 +30,9 @@ class MapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
 
         val fabCenter = findViewById<View>(R.id.fabCenter)
@@ -52,6 +63,30 @@ class MapActivity : AppCompatActivity() {
             nestedScrollView?.smoothScrollTo(0, 0)
         }
     }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        enableMyLocation()
+    }
+
+    private fun enableMyLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            // Habilita a bolinha azul da localização atual
+            map.isMyLocationEnabled = true
+
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+        }
+    }
+
 
     private fun showHome() {
         val intent = Intent(this, HomeActivity::class.java)

@@ -5,14 +5,24 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.toColorInt
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pic.repository.FinanceRepository
 import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class HistoryActivity : AppCompatActivity() {
 
@@ -24,6 +34,10 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var btnfilterValue: MaterialButton
 
     private lateinit var filterButtons: List<MaterialButton>
+
+    private lateinit var adapter: HistoryAdapter
+    private val historyItems = mutableListOf<HistoryItem>()
+    private val repository = FinanceRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +59,11 @@ class HistoryActivity : AppCompatActivity() {
         btnfilterValue = findViewById(R.id.btnFilterValue)
         filterButtons = listOf(btnfilterAll, btnfilterType, btnfilterPayment, btnfilterValue)
 
-        val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.rvHistory)
-        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        
-        val historyList = listOf(
-            HistoryItem("Almoço", "Alimentação · Restaurante · Crédito 1x", "- R$ 38,50", true),
-            HistoryItem("Supermercado", "Alimentação · Compras · Débito", "- R$ 150,00", true),
-            HistoryItem("Salário", "Trabalho · Pix", "+ R$ 3.500,00", false),
-            HistoryItem("Uber", "Transporte · Viagem · Pix", "- R$ 22,90", true)
-        )
-        recyclerView.adapter = HistoryAdapter(historyList.toMutableList())
+        val rvHistory = findViewById<RecyclerView>(R.id.rvHistory)
+        adapter = HistoryAdapter(historyItems)
+        rvHistory.layoutManager = LinearLayoutManager(this)
+        rvHistory.adapter = adapter
+        loadTransactionHistory()
 
         homeButton?.setOnClickListener { showHomeActivity() }
         btnIndicadores?.setOnClickListener { showIndicatorsActivity() }
@@ -117,6 +126,45 @@ class HistoryActivity : AppCompatActivity() {
             selectedButton.backgroundTintList = ColorStateList.valueOf(colorActiveBg)
             selectedButton.setTextColor(colorActiveText)
             selectedButton.typeface = Typeface.create(selectedButton.typeface, Typeface.BOLD)
+        }
+    }
+
+    private fun loadTransactionHistory() {
+        lifecycleScope.launch {
+            val result = repository.getTransactionHistory() //
+
+            result.onSuccess { transactions ->
+                val localeBR = Locale("pt", "BR")
+                val currencyFormat = NumberFormat.getCurrencyInstance(localeBR)
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", localeBR)
+
+                historyItems.clear()
+
+                val mappedItems = transactions.map { transaction ->
+                    val isExpense = transaction.type == "EXPENSE"
+                    val sign = if (isExpense) "-" else "+"
+
+                    val dateString = if (transaction.timestamp != null) {
+                        dateFormat.format(transaction.timestamp.toDate())
+                    } else {
+                        "Data desconhecida"
+                    }
+
+                    HistoryItem(
+                        title = transaction.description.ifEmpty { transaction.category },
+                        subtitle = "${transaction.category} • $dateString",
+                        value = "$sign ${currencyFormat.format(transaction.amount)}",
+                        isExpense = isExpense
+                    )
+                }
+
+                historyItems.addAll(mappedItems)
+                adapter.notifyDataSetChanged()
+
+            }.onFailure { error ->
+                Log.e("HistoryActivity", "Erro ao buscar histórico", error)
+                Toast.makeText(this@HistoryActivity, "Falha ao carregar histórico.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
